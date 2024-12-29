@@ -1,0 +1,258 @@
+/* Navbar styles */
+*{
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #AB886D;
+  color: #fff;
+  padding: 0.25rem 0;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  height: 70px;
+}
+
+nav .logo {
+  width: 80px;
+}
+
+nav .logo img{
+  width: 100%;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+}
+
+.nav-links a:hover {
+  color: crimson;
+}
+
+.nav-links a.active {
+  color: #E4E0E1;
+  cursor: default;
+  pointer-events: none;
+  font-weight: bolder;
+}
+
+/* General styles */
+
+main {
+  text-align: center;
+  height: calc(100vh - 130px);
+}
+
+main.menu {
+  height: auto;
+}
+
+main.home {
+  background-image: url(assets/imgs/main-image.avif);
+  background-repeat: none;
+  background-size: cover;
+}
+
+
+/* Homepage styles */
+
+main .hero{
+  padding: 1rem 1rem;
+  background-color: #49362890;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
+main .hero h1{
+  color: #E4E0E1;
+  font-size:3rem;
+  margin: 0.5rem;
+}
+
+main .hero p{
+  color: #D6C0B3;
+  margin: 0.5rem;
+}
+
+main .hero a{
+  background-color: #E4E0E1;
+  color: #493628;
+  text-decoration: none;
+  padding: 0.5rem 2rem;
+  margin: 0.5rem;
+  border-radius: 25px;
+}
+
+main .hero a:hover{
+  color: crimson;
+}
+
+/* About styles */
+
+section#about{
+  margin-bottom: 4rem;
+}
+
+section#about p{
+  width: 80%;
+  margin: 0 auto;
+  background-color: #AB886D;
+  border-radius: 15px;
+  padding: 1rem;
+  color: #fff;
+}
+
+section#we-offer .services{
+  width: 80%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+section#we-offer .services .service{
+  flex-basis: 40%;
+  flex-grow: 1;
+  border-radius: 10px;
+}
+
+section#we-offer .services .service:nth-child(1) ,
+section#we-offer .services .service:nth-child(4)
+{
+  background-color: #E4E0E1;
+}
+
+section#we-offer .services .service:nth-child(2) ,
+section#we-offer .services .service:nth-child(3)
+{
+  background-color: #D6C0B3;
+}
+
+/* Menu styles */
+section#menu h1{
+  text-align: start;
+  padding: 0.5rem 2rem;
+}
+
+section#menu .menu{
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: 1rem auto;
+
+}
+
+section#menu .menu .menu-item{
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  background-color: #E4E0E1;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  border: 1px solid #493628;
+  gap: 2rem;
+  height: 100px;
+}
+
+section#menu .menu .menu-item .thumbnail{
+  height: 100%;
+  width: 15%;
+  margin: 0;
+}
+
+section#menu .menu .menu-item .thumbnail img{ 
+  height: 100%;
+  width: 100%;
+  object-fit: fill;
+  border-radius: 10px 0 0 10px;
+}
+
+section#menu .menu .menu-item .desc h3{
+  margin: 0.25rem 0 2rem;
+}
+
+section#menu .menu .menu-item .desc p{
+  margin: 0.25rem 0;
+  text-align: start;
+  color: #493628;
+}
+
+
+/* Footer styles */
+
+footer {
+  background: #493628;
+  color: white;
+  font-size: 0.75rem;
+  padding: 0.25rem;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  place-items: center;
+}
+
+footer p{
+  text-align: center;
+  width: 100%;
+  margin: 0;
+}
+
+/* Form Styles */
+form {
+  max-width: 500px;
+  margin: 2rem auto;
+  text-align: left;
+}
+
+form label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+form input,
+form textarea,
+form select {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+form button {
+  width: 100%;
+  padding: 0.5rem;
+  background-color: #6b4226;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: #5a3820;
+}
