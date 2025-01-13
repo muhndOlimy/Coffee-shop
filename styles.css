@@ -60,7 +60,7 @@ main {
   height: calc(100vh - 130px);
 }
 
-main.menu {
+main.menu , main.register {
   height: auto;
 }
 
@@ -241,6 +241,10 @@ form select {
   margin-bottom: 1rem;
   border: 1px solid #ccc;
   border-radius: 5px;
+}
+
+form input[type="radio"], form input[type="checkbox"] {
+  width: auto;
 }
 
 form button {

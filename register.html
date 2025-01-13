@@ -24,18 +24,44 @@
       </menu>
     </nav>
 </header>
-  <main>
+  <main class="register">
     <section id="register">
       <h1>Register</h1>
       <form>
         <label for="name">Name:</label>
         <input type="text" id="name" name="name" required>
+
         <label for="email">Email:</label>
         <input type="email" id="email" name="email" required>
+
         <label for="password">Password:</label>
         <input type="password" id="password" name="password" required>
+
         <label for="confirm-password">Confirm Password:</label>
         <input type="password" id="confirm-password" name="confirm-password" required>
+
+        <fieldset>
+          <legend>Gender:</legend>
+          <input type="radio" name="gender" value="male" required> Male
+          <input type="radio" name="gender" value="female"> Female
+        </fieldset>
+
+        <fieldset>
+          <legend>Interests:</legend>
+          <label><input type="checkbox" name="interests" value="coffee"> Coffee</label>
+          <label><input type="checkbox" name="interests" value="tea"> Tea</label>
+          <label><input type="checkbox" name="interests" value="desserts"> Desserts</label>
+        </fieldset>
+
+        <label for="country">Country:</label>
+        <select id="country" name="country" required>
+          <option value="">Select your country</option>
+          <option value="egy">Egypt</option>
+          <option value="ksa">KSA</option>
+          <option value="uae">UAE</option>
+          <option value="usa">United States</option>
+        </select>
+
         <button type="submit">Register</button>
       </form>
     </section>
