@@ -117,8 +117,10 @@ class ValidatorHook {
     }
 
     reset() {
-        this.#error.textContent = null;
-        this.#error.style.display = 'none';
+        if (this.#error) {
+            this.#error.textContent = null;
+            this.#error.style.display = 'none';
+        }
     }
 
     #getId(element) {

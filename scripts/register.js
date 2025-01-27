@@ -19,7 +19,7 @@ let validationHooks = [ new ValidatorHook(namef),
                         new ValidatorHook(confirmPassword),
                         new ValidatorHook(country),
                         new ValidatorHook('gender', [requiredValidator]),
-                        new ValidatorHook('interests', [requiredValidator])];
+                        new ValidatorHook('interests[]', [requiredValidator])];
 
 let form = document.forms[0];
 
