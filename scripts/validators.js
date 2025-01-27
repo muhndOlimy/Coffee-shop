@@ -64,7 +64,7 @@ class RegexValidator extends Validator {
 
     validate(value, messages) {
         if (value == '') return;
-        if (this.#pattern.test(value)) messages.push(this.#errorMessage);
+        if (!this.#pattern.test(value)) messages.push(this.#errorMessage);
     }
 }
 
@@ -148,6 +148,6 @@ class ValidatorHook {
     }
 }
 
-const emailRegExp = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+const emailRegExp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 var emailValidator = new RegexValidator(emailRegExp, "Value must be an email");
 var requiredValidator = new RequiredValidator();
