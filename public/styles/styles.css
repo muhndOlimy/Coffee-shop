@@ -65,7 +65,7 @@ main.menu , main.register {
 }
 
 main.home {
-  background-image: url(assets/imgs/main-image.avif);
+  background-image: url(../assets/imgs/main-image.avif);
   background-repeat: none;
   background-size: cover;
 }
