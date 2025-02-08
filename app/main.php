@@ -2,21 +2,37 @@
 
 require_once __DIR__ . "/../vendor/autoload.php";
 
-use Configs\DBConfigs;
-use Configs\Env;
-use Models\Country;
-use Repositories\Repository;
+use Models\Requests\LoginRequest;
+use Models\Requests\RegisterRequest;
+use Services\AuthService;
 
-Env::loadEnvFile();
+$di = new DI();
+$authService = $di->container->get(AuthService::class);
 
-$dbConfigs = DBConfigs::fromEnv();
-$dbDataSource = new DBDataSource($dbConfigs);
-$dbDataSource->connect();
-//$result = $dbDataSource->execute("INSERT INTO users (username, password, first_name, last_name, email, state_id) VALUES (?,?,?,?,?,?);");
-$repo = new Repository($dbDataSource, Country::class);
-$row = $repo->findById(29);
-$row->name = 'Egypt 2';
-print_r($repo->update($row));
+$request = new RegisterRequest();
+$request->username = 'test_new';
+$request->password = 'test12345';
+$request->email = 'test@test.com';
+$request->firstName = 'Test';
+$request->lastName = 'Test2';
+$request->interests = [];
+$request->state = 1;
+
+try {
+    print_r($authService->register($request));
+} catch (Exception $e) {
+    print_r($e);
+}
+
+$request = new LoginRequest();
+$request->email = 'test@test.com';
+$request->password = 'test12345';
+
+try {
+    print_r($authService->login($request));
+} catch (Exception $e) {
+    print_r($e);
+}
 
 
 

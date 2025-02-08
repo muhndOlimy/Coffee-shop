@@ -3,6 +3,7 @@
         "classmap": ["app/"]
     },
     "require": {
-        "ext-mysqli": "*"
+        "ext-mysqli": "*",
+        "php-di/php-di": "^7.0"
     }
 }

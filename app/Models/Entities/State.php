@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Models;
+namespace Models\Entities;
 
 use Configs\DBColumn;
 use Configs\DBTable;
@@ -10,8 +10,9 @@ use Configs\DBTable;
 #[DBTable(name: "states")]
 class State
 {
+    #[DBColumn(isPK: true)]
     public int $id;
     public string $name;
     #[DBColumn(name: "country_id")]
-    public string $countryId;
+    public int $countryId;
 }

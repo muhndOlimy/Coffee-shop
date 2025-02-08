@@ -29,13 +29,13 @@ class DBDataSource
     {
         $this->assertConnectionExists();
         $stmt = $this->conn->prepare($query);
-        $stmt->bind_param($this->paramsTypes($params), ...$params);
+        $stmt->bind_param($this->paramsTypes($params), ...array_values($params));
         try {
             if (!$stmt->execute()) {
                 throw new Exception($stmt->error);
             }
         } catch (mysqli_sql_exception $e) {
-            throw new Exception($e->getMessage());
+            throw new Exception($e->getMessage(), $e->getCode(), $e);
         }
         $result = $stmt->get_result();
         return $stmt->insert_id ?? null;
@@ -51,7 +51,7 @@ class DBDataSource
         try {
             $stmt->execute();
         } catch (mysqli_sql_exception $e) {
-            throw new Exception($e->getMessage());
+            throw new Exception($e->getMessage(), $e->getCode(), $e);
         }
         $result = $stmt->get_result();
         $data = [];
