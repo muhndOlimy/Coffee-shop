@@ -3,6 +3,7 @@ let email = document.getElementById("email");
 let password = document.getElementById("password");
 let confirmPassword = document.getElementById("confirm-password");
 let country = document.getElementById("country");
+let state = document.getElementById("state");
 
 let gender = 'gender';
 let interests = 'interests';
@@ -12,12 +13,14 @@ email.validators = [requiredValidator, emailValidator];
 password.validators = [requiredValidator, new MinLengthValidator(6), new MaxLengthValidator(20)];
 confirmPassword.validators = [requiredValidator, new MatchValidator(password)];
 country.validators = [requiredValidator];
+state.validators = [requiredValidator];
 
 let validationHooks = [ new ValidatorHook(namef), 
                         new ValidatorHook(email),
                         new ValidatorHook(password), 
                         new ValidatorHook(confirmPassword),
                         new ValidatorHook(country),
+                        new ValidatorHook(state),
                         new ValidatorHook('gender', [requiredValidator]),
                         new ValidatorHook('interests[]', [requiredValidator])];
 

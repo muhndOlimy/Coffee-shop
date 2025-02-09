@@ -15,4 +15,5 @@ class RegisterRequest
     public int $state;
     /** @var int[] */
     public array $interests;
+    public string $gender;
 }

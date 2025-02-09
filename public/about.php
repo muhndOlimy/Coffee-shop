@@ -4,4 +4,4 @@ declare(strict_types=1);
 
 require_once __DIR__ . "/../vendor/autoload.php";
 
-View::renderView("about.html");
+View::renderView(basename(__FILE__));

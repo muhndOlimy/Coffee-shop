@@ -17,6 +17,7 @@ $request->firstName = 'Test';
 $request->lastName = 'Test2';
 $request->interests = [];
 $request->state = 1;
+$request->gender = 'M';
 
 try {
     print_r($authService->register($request));

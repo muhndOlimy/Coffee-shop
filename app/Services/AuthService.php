@@ -40,6 +40,7 @@ readonly class AuthService
         $user->email = $request->email;
         $user->password = password_hash($request->password, PASSWORD_ARGON2I);
         $user->stateId = $this->stateRepository->findById($request->state)?->id;
+        $user->gender = $request->gender;
 
         $user->id = $this->userRepository->insert([$user]);
         $interests = array_map(function ($category) use ($user) {

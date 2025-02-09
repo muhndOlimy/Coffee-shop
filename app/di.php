@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Configs\DBConfigs;
 use Configs\Env;
 use DI\Container;
@@ -66,6 +68,7 @@ class DI
                 return new DrinkService(
                     new Repository($dbDataSource, Drink::class),
                     new Repository($dbDataSource, DrinkSize::class),
+                    new Repository($dbDataSource, DrinkCategory::class),
                 );
             },
             CategoryService::class => function (Container $container) {

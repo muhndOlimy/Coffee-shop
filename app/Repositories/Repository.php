@@ -20,7 +20,10 @@ class Repository
         $this->classMapper = new DBClassMapper($this->class);
     }
 
-    /** @return T */
+    /**
+     * @param array<string, mixed>|mixed $id
+     * @return T
+     */
     public function findById(mixed $id)
     {
         $whereVals = $this->preparePKs($id);
@@ -30,7 +33,10 @@ class Repository
         return $this->classMapper->mapFromDB($result[0]);
     }
 
-    /** @return T */
+    /**
+     * @param array<string, mixed> $cols
+     * @return T
+     */
     public function findBy(array $cols = [])
     {
         $result = $this->findAllByImpl($cols);
@@ -38,14 +44,20 @@ class Repository
         return $this->classMapper->mapFromDB($result[0]);
     }
 
-    /** @return T[] */
+    /**
+     * @param array<string, mixed> $cols
+     * @return T[]
+     */
     public function findAllBy(array $cols = []): array
     {
         $result = $this->findAllByImpl($cols);
         return array_map(fn($row) => $this->classMapper->mapFromDB($row), $result);
     }
 
-    /** @return stdClass[] */
+    /**
+     * @param array<string, mixed> $cols
+     * @return stdClass[]
+     */
     private function findAllByImpl(array $cols): array
     {
         if (count($cols) == 0) {
@@ -54,8 +66,7 @@ class Repository
             $where = $this->generateWhereClause($cols);
             $where = "WHERE $where";
         }
-        $result = $this->dataSource->query("SELECT * FROM {$this->classMapper->tableName} $where", array_values($cols));
-        return $result;
+        return $this->dataSource->query("SELECT * FROM {$this->classMapper->tableName} $where", array_values($cols));
     }
 
     /** @param T[] $entities */
@@ -88,7 +99,7 @@ class Repository
     public function update($entity, ?array $columns = null): null|int|string
     {
         $columns ??= $this->classMapper->updatableColumns;
-        foreach ($this->classMapper->pks as $prop => $col) {
+        foreach ($this->classMapper->pks as $col) {
             unset($columns[$col]);
             $idKey = array_search($col, $columns, strict: true);
             if ($idKey !== false) {
@@ -99,7 +110,7 @@ class Repository
         $values = $this->classMapper->mapToDB($entity);
         $entityValues = [];
         $cols = [];
-        foreach ($columns as $_ => $col) {
+        foreach ($columns as $col) {
             $entityValues[] = $values->$col;
             $cols[] = "$col=?";
         }

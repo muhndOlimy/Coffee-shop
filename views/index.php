@@ -11,19 +11,7 @@
 </head>
 <body>
     <header>
-        <nav>
-          <div class="logo">
-            <img src="../public/assets/imgs/main-logo.png" alt="Coffee logo">
-          </div>
-          <menu class="nav-links">
-            <li><a class="active" href="../public/index.php">Home</a></li>
-            <li><a href="../public/menu.php">Menu</a></li>
-            <li><a href="../public/about.php">About</a></li>
-            <li><a href="../public/contact.php">Contact</a></li>
-            <li><a href="../public/register.php">Register</a></li>
-            <li><a href="../public/login.php">Login</a></li>
-          </menu>
-        </nav>
+        <?php Component::renderComponent("nav.php"); ?>
     </header>
 
   <main class="home">

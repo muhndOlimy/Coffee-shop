@@ -6,42 +6,35 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
   <script src="../public/scripts/validators.js" defer></script>
-  <script src="../public/scripts/login.js" defer></script>
-  <title>Login</title>
+  <script src="../public/scripts/contact.js" defer></script>
+  <title>Contact Us</title>
   <link rel="stylesheet" href="../public/styles/styles.css">
 </head>
 <body>
   <header>
-    <nav>
-      <div class="logo">
-        <img src="../public/assets/imgs/main-logo.png" alt="Coffee logo">
-      </div>
-      <menu class="nav-links">
-        <li><a href="../public/index.php">Home</a></li>
-        <li><a href="../public/menu.php">Menu</a></li>
-        <li><a href="../public/about.php">About</a></li>
-        <li><a href="../public/contact.php">Contact</a></li>
-        <li><a href="../public/register.php">Register</a></li>
-        <li><a class="active" href="../public/login.php">Login</a></li>
-      </menu>
-    </nav>
+      <?php Component::renderComponent("nav.php"); ?>
 </header>
 
   <main>
-    <section id="login">
-      <h1>Login</h1>
+    <section id="contact">
+      <h1>Contact Us</h1>
       <form novalidate>
+        <div>
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" required>
+          <div id="name_error" class="error"></div>
+        </div>
         <div>
           <label for="email">Email:</label>
           <input type="email" id="email" name="email" required>
           <div id="email_error" class="error"></div>
         </div>
         <div>
-          <label for="password">Password:</label>
-          <input type="password" id="password" name="password" required>
-          <div id="password_error" class="error"></div>
+          <label for="message">Message:</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+          <div id="message_error" class="error"></div>
         </div>
-        <button type="submit">Login</button>
+        <button type="submit">Send Message</button>
       </form>
     </section>
   </main>

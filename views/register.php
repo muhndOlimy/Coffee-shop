@@ -12,19 +12,7 @@
 </head>
 <body>
   <header>
-    <nav>
-      <div class="logo">
-        <img src="../public/assets/imgs/main-logo.png" alt="Coffee logo">
-      </div>
-      <menu class="nav-links">
-        <li><a href="../public/index.php">Home</a></li>
-        <li><a href="../public/menu.php">Menu</a></li>
-        <li><a href="../public/about.php">About</a></li>
-        <li><a href="../public/contact.php">Contact</a></li>
-        <li><a class="active" href="../public/register.php">Register</a></li>
-        <li><a href="../public/login.php">Login</a></li>
-      </menu>
-    </nav>
+      <?php Component::renderComponent("nav.php"); ?>
 </header>
   <main class="register">
     <section id="register">
@@ -83,6 +71,18 @@
             <option value="usa">United States</option>
           </select>
           <div id="country_error" class="error"></div>
+        </div>
+
+        <div>
+          <label for="state">State:</label>
+          <select id="state" name="state" required>
+            <option value="">Select your state</option>
+            <option value="egy">Egypt</option>
+            <option value="ksa">KSA</option>
+            <option value="uae">UAE</option>
+            <option value="usa">United States</option>
+          </select>
+          <div id="state_error" class="error"></div>
         </div>
 
         <button type="submit">Register</button>

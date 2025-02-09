@@ -23,4 +23,5 @@ class User
     public string $createdAt;
     #[DBColumn(name: 'state_id')]
     public int $stateId;
+    public string $gender;
 }
