@@ -12,7 +12,6 @@ class Order
 {
     #[DBColumn(isPK: true)]
     public int $id;
-    public string $name;
     #[DBColumn(name: 'user_id')]
     public int $userId;
     #[DBColumn(name: 'created_at', insert: false, update: false)]

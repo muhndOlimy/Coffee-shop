@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Services;
 
 use Exception;
+use Managers\UserManager;
 use Models\Entities\DrinkCategory;
 use Models\Entities\State;
 use Models\Entities\User;
@@ -21,10 +22,11 @@ readonly class AuthService
      * @param Repository<DrinkCategory> $categoryRepository
      * @param Repository<UserFavouriteCategory> $favouriteRepository
      */
-    public function __construct(private Repository $userRepository,
-                                private Repository $stateRepository,
-                                private Repository $categoryRepository,
-                                private Repository $favouriteRepository,
+    public function __construct(private UserManager $userManager,
+                                private Repository  $userRepository,
+                                private Repository  $stateRepository,
+                                private Repository  $categoryRepository,
+                                private Repository  $favouriteRepository,
     )
     {
     }
@@ -49,7 +51,7 @@ readonly class AuthService
         }, $request->interests);
 
         $this->favouriteRepository->insert($interests);
-
+        $this->userManager->setUser($user);
         return $user;
     }
 
@@ -59,6 +61,7 @@ readonly class AuthService
         if (is_null($user) || !password_verify($request->password, $user->password)) {
             throw new Exception("User not found");
         }
+        $this->userManager->setUser($user);
         return $user;
     }
 }
