@@ -139,7 +139,7 @@ class Repository
         if (gettype($values) === 'array') {
             return array_map(function ($col) use ($values) {
                 return $values[$col];
-            }, $this->classMapper->pks);
+            }, array_keys($this->classMapper->pks));
         }
         return [$values];
     }

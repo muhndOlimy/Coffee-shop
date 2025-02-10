@@ -19,4 +19,21 @@ class ArrayUtils
         }
         return $return;
     }
+
+    /**
+     * @template T
+     * @template K
+     * @template R
+     * @param array<K, T> $array
+     * @param callable(K, T):R $callback
+     * @return array<R, T>
+     */
+    public static function mapKeys(array $array, callable $callback): array
+    {
+        $return = array();
+        foreach ($array as $key => $val) {
+            $return[call_user_func($callback, $key, $val)] = $val;
+        }
+        return $return;
+    }
 }

@@ -18,13 +18,11 @@ readonly class OrderService
      * @param UserManager $userManager
      * @param Repository<Order> $orderRepo
      * @param Repository<OrderItem> $itemRepo
-     * @param Repository<Drink> $drinkRepo
      * @param Repository<DrinkSize> $sizeRepo
      */
     public function __construct(private UserManager $userManager,
                                 private Repository  $orderRepo,
                                 private Repository  $itemRepo,
-                                private Repository  $drinkRepo,
                                 private Repository  $sizeRepo)
     {
     }
@@ -32,7 +30,7 @@ readonly class OrderService
     public function submit(OrderRequest $request): Order
     {
         $this->userManager->ensureAuthentication();
-        $drinkSize = $this->sizeRepo->findById(['drink_id' => $request->drinkId, 'size' => $request->size]);
+        $drinkSize = $this->sizeRepo->findById(['drinkId' => $request->drinkId, 'size' => $request->size]);
         $user = $this->userManager->getUser();
 
         $orderItem = new OrderItem();
@@ -43,7 +41,7 @@ readonly class OrderService
 
         $order = new Order();
         $order->userId = $user->id;
-        $order->totalPrice = $orderItem->quantity * $orderItem->price;
+        $order->totalPrice = (string)($orderItem->quantity * (float)$orderItem->price);
         $order->id = $this->orderRepo->insert([$order]);
 
         $orderItem->orderId = $order->id;

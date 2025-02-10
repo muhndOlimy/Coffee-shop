@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-readonly class Renderable
+readonly abstract class Renderable
 {
-    public function __construct(private string $viewPath)
+    public function __construct(protected string $viewPath)
     {
     }
 
     public function render(): void
     {
-        require __DIR__ . "/../views/" . $this->viewPath;
+        require __DIR__ . "/../../views/" . $this->viewPath;
     }
 }
 

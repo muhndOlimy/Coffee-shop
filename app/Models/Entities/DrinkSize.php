@@ -14,7 +14,7 @@ class DrinkSize
     public int $drinkId;
     #[DBColumn(isPK: true)]
     public string $size;
-    public float $price;
+    public string $price;
     #[DBColumn(name: 'price_promo')]
-    public ?float $pricePromo;
+    public ?string $pricePromo;
 }

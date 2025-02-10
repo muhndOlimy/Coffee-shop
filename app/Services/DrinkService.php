@@ -28,7 +28,7 @@ readonly class DrinkService
     public function list(): array
     {
         $drinks = $this->drinkRepo->findAllBy();
-        $categories = ArrayUtils::groupBy($this->categoryRepo->findAllBy(), fn($category) => $category->id);
+        $categories = ArrayUtils::mapKeys($this->categoryRepo->findAllBy(), fn($_, $category) => $category->id);
         $sizes = ArrayUtils::groupBy($this->sizeRepo->findAllBy(), fn($size) => $size->drinkId);
         return array_map(function ($drink) use ($sizes, $categories) {
             return new DrinkWithInfo($drink, $sizes[$drink->id] ?? [], $categories[$drink->categoryId]);

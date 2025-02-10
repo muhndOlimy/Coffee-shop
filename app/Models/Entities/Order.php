@@ -17,5 +17,5 @@ class Order
     #[DBColumn(name: 'created_at', insert: false, update: false)]
     public string $createdAt;
     #[DBColumn(name: 'total_price')]
-    public float $totalPrice;
+    public string $totalPrice;
 }

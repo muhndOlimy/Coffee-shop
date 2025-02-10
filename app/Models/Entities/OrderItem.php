@@ -18,5 +18,5 @@ class OrderItem
     public int $drinkId;
     public string $size;
     public int $quantity;
-    public float $price;
+    public string $price;
 }

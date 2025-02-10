@@ -57,11 +57,15 @@ nav .logo img{
 
 main {
   text-align: center;
-  height: calc(100vh - 130px);
+  height: calc(100vh - 148px);
 }
 
-main.menu , main.register {
+main.register {
   height: auto;
+}
+
+main.menu {
+  min-height: fit-content;
 }
 
 main.home {
@@ -169,6 +173,7 @@ section#menu .menu .menu-item{
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
+  text-align: start;
   background-color: #E4E0E1;
   border-radius: 10px;
   margin-bottom: 1rem;
@@ -183,15 +188,27 @@ section#menu .menu .menu-item .thumbnail{
   margin: 0;
 }
 
-section#menu .menu .menu-item .thumbnail img{ 
+section#menu .menu .menu-item .thumbnail img{
   height: 100%;
   width: 100%;
   object-fit: fill;
   border-radius: 10px 0 0 10px;
 }
 
+section#menu .menu .menu-item .desc {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 section#menu .menu .menu-item .desc h3{
-  margin: 0.25rem 0 2rem;
+  margin: 0.25rem 0 0;
+}
+
+section#menu .menu .menu-item .desc .prices{
+  display: flex;
+  justify-content: flex-start;
+  gap: 0.5rem;
 }
 
 section#menu .menu .menu-item .desc p{
@@ -231,6 +248,10 @@ form {
   max-width: 500px;
   margin: 2rem auto;
   text-align: left;
+}
+
+.menu-item form {
+  margin: revert;
 }
 
 form label {

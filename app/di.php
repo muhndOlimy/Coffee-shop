@@ -5,7 +5,10 @@ declare(strict_types=1);
 use Configs\DBConfigs;
 use Configs\Env;
 use DI\Container;
+use Managers\ErrorManager;
+use Managers\SuccessManager;
 use Managers\UserManager;
+use Models\Dtos\AppState;
 use Models\Entities\Country;
 use Models\Entities\Drink;
 use Models\Entities\DrinkCategory;
@@ -37,6 +40,8 @@ class DI
             DBConfigs::class => DI\factory([DBConfigs::class, 'fromEnv']),
             DBDataSource::class => DI\autowire()->method('connect'),
             UserManager::class => DI\autowire(),
+            ErrorManager::class => DI\autowire(),
+            SuccessManager::class => DI\autowire(),
             AuthService::class => function (Container $container) {
                 $dbDataSource = $container->get(DBDataSource::class);
                 return new AuthService(
@@ -59,7 +64,6 @@ class DI
                     $container->get(UserManager::class),
                     new Repository($dbDataSource, Order::class),
                     new Repository($dbDataSource, OrderItem::class),
-                    new Repository($dbDataSource, Drink::class),
                     new Repository($dbDataSource, DrinkSize::class),
                 );
             },
@@ -83,6 +87,15 @@ class DI
                     new Repository($dbDataSource, Country::class),
                     new Repository($dbDataSource, State::class)
                 );
+            },
+            AppStateFactory::class => function (Container $container) {
+                return new AppStateFactory(
+                    $container->get(UserManager::class),
+                    $container->get(ErrorManager::class)
+                );
+            },
+            AppState::class => function (Container $container) {
+                return $container->get(AppStateFactory::class)->createState();
             },
         ]);
         $this->container = $builder->build();

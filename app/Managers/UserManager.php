@@ -12,6 +12,7 @@ class UserManager
 
     public function __construct()
     {
+        session_start();
     }
 
     public function ensureAuthentication()
@@ -31,8 +32,13 @@ class UserManager
         return $_SESSION[self::KEY] ?? null;
     }
 
-    public function setUser(User $user): void
+    public function setUser(?User $user): void
     {
-        $_SESSION[self::KEY] = $user;
+        if (is_null($user)) {
+            unset($_SESSION[self::KEY]);
+        } else {
+            $_SESSION[self::KEY] = $user;
+        }
+
     }
 }

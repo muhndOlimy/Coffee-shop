@@ -1,119 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-  <title>Menu | Coffee Express</title>
-  <link rel="stylesheet" href="../public/styles/styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <?php Component::renderComponent("links.php"); ?>
+    <script src="../public/scripts/menu.js" defer></script>
+    <title>Menu | Coffee Express</title>
+    <link rel="stylesheet" href="../public/styles/styles.css">
 </head>
 <body>
-  <header>
-      <?php Component::renderComponent("nav.php"); ?>
+<template id="drink_template">
+    <div class="menu-item">
+        <div class="thumbnail">
+            <img src="../public/assets/imgs/Espresso.avif" alt="Espresso">
+        </div>
+        <div class="desc">
+            <h3>Espresso</h3>
+            <form method="post" action="#" novalidate>
+                <input type="hidden" name="drink-id">
+                <input type="hidden" name="size">
+                <div class="prices"></div>
+            </form>
+        </div>
+    </div>
+</template>
+
+<header>
+    <?php Component::renderComponent("nav.php"); ?>
 </header>
 
-  <main class="menu">
+<main class="menu">
     <section id="menu">
-      <h1>Our Coffee Menu</h1>
-      <div class="menu">
-        <div class="menu-item">
-          <div class="thumbnail">
-            <img src="../public/assets/imgs/espresso.avif" alt="Espresso">
-          </div>
-          <div class="desc">
-            <h3>Espresso</h3>
-            <p>$3.00</p>
-          </div>
-        </div>
-        <div class="menu-item">
-          <div class="thumbnail">
-            <img src="../public/assets/imgs/latte.avif" alt="Latte">
-          </div>
-          <div class="desc">
-            <h3>Latte</h3>
-            <p>$4.50</p>
-          </div>
-        </div>
-        <div class="menu-item">
-          <div class="thumbnail">
-            <img src="../public/assets/imgs/cappuccino.avif" alt="Cappuccino">
-          </div>
-          <div class="desc">
-            <h3>Cappuccino</h3>
-            <p>$4.00</p>
-          </div>
-        </div>
-        <div class="menu-item">
-          <div class="thumbnail">
-            <img src="../public/assets/imgs/Mocha.jpg" alt="Mocha">
-          </div>
-          <div class="desc">
-            <h3>Mocha</h3>
-            <p>$4.50</p>
-          </div>
-        </div>
-        <div class="menu-item">
-          <div class="thumbnail">
-            <img src="../public/assets/imgs/Americano.jpg" alt="Americano">
-          </div>
-          <div class="desc">
-            <h3>Americano</h3>
-            <p>$3.50</p>
-          </div>
-        </div>
-        <div class="menu-item">
-          <div class="thumbnail">
-            <img src="../public/assets/imgs/Macchiato.jpg" alt="Macchiato">
-          </div>
-          <div class="desc">
-            <h3>Macchiato</h3>
-            <p>$4.00</p>
-          </div>
-        </div>
-        <div class="menu-item">
-          <div class="thumbnail">
-            <img src="../public/assets/imgs/Flat White.jpg" alt="Flat White">
-          </div>
-          <div class="desc">
-            <h3>Flat White</h3>
-            <p>$4.00</p>
-          </div>
-        </div>
-        <div class="menu-item">
-          <div class="thumbnail">
-            <img src="../public/assets/imgs/Cold Brew.avif" alt="Cold Brew">
-          </div>
-          <div class="desc">
-            <h3>Cold Brew</h3>
-            <p>$4.50</p>
-          </div>
-        </div>
-        <div class="menu-item">
-          <div class="thumbnail">
-            <img src="../public/assets/imgs/Iced Latte.jpg" alt="Iced Latte">
-          </div>
-          <div class="desc">
-            <h3>Iced Latte</h3>
-            <p>$4.50</p>
-          </div>
-        </div>
-        <div class="menu-item">
-          <div class="thumbnail">
-            <img src="../public/assets/imgs/frappuccino.avif" alt="Frappuccino">
-          </div>
-          <div class="desc">
-            <h3>Frappuccino</h3>
-            <p>$5.00</p>
-          </div>
-        </div>
-       
-      </div>
-    </section>
-  </main>
+        <h1>Our Coffee Menu</h1>
+        <div id="menu_list" class="menu">
 
-  <footer>
+        </div>
+    </section>
+</main>
+
+<footer>
     <p>&copy; 2024 Coffee Express. All rights reserved.</p>
-  </footer>
+</footer>
 </body>
 </html>

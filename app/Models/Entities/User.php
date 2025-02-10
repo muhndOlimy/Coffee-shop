@@ -12,7 +12,6 @@ class User
 {
     #[DBColumn(isPK: true)]
     public int $id;
-    public string $username;
     public string $password;
     #[DBColumn(name: 'first_name')]
     public string $firstName;

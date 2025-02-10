@@ -150,6 +150,18 @@ class ValidatorHook {
     }
 }
 
+class ValidatorHooksAggregator {
+    #hooks;
+
+    constructor(hooks) {
+        this.#hooks = hooks;
+    }
+
+    validate() {
+        return this.#hooks.flatMap(el => el.validate());
+    }
+}
+
 const emailRegExp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 var emailValidator = new RegexValidator(emailRegExp, "Value must be an email");
 var requiredValidator = new RequiredValidator();

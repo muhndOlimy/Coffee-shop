@@ -7,13 +7,13 @@ name.validators = [requiredValidator, new MinLengthValidator(8), new MaxLengthVa
 email.validators = [requiredValidator, emailValidator];
 message.validators = [requiredValidator, new MinLengthValidator(10), new MaxLengthValidator(100)];
 
-let validationHooks = [new ValidatorHook(name), new ValidatorHook(email), new ValidatorHook(message)];
+let validationHooks = new ValidatorHooksAggregator([new ValidatorHook(name), new ValidatorHook(email), new ValidatorHook(message)]);
 
 let form = document.forms[0];
 
 form.onsubmit = (e) => {
-    let errors = validationHooks.flatMap(el => {el.validate()});
-    return errors.length == 0;
+    let errors = validationHooks.validate();
+    return errors.length === 0;
 }
 
 form.onreset = (e) => {

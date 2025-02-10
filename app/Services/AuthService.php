@@ -34,7 +34,6 @@ readonly class AuthService
     public function register(RegisterRequest $request): User
     {
         $user = new User();
-        $user->username = $request->username;
         $user->firstName = $request->firstName;
         $user->lastName = $request->lastName;
         $user->email = $request->email;
@@ -64,5 +63,10 @@ readonly class AuthService
         }
         $this->userManager->setUser($user);
         return $user;
+    }
+
+    public function logout(): void
+    {
+        $this->userManager->setUser(null);
     }
 }
