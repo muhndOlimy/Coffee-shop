@@ -27,7 +27,8 @@ function insertDrinks(drinks) {
         name.textContent = drink.name;
         for (const price of sizes) {
             let p = document.createElement("button");
-            p.textContent = `${price.size} $${price.pricePromo ?? price.price}`;
+            p.innerHTML = `${price.size}<br>$${price.pricePromo ?? price.price}`;
+            p.style.minWidth = '80px';
             p.onclick = function (e) {
                 e.preventDefault();
                 p.form.querySelector("input[name='drink-id']").value = drink.id;

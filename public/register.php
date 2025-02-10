@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use Managers\ErrorManager;
 use Managers\SuccessManager;
+use Managers\UserManager;
 use Models\Dtos\AppState;
 use Models\Requests\RegisterRequest;
 use Services\AuthService;
@@ -35,12 +36,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-$appState = $di->container->get(AppState::class);
+$userManager = $di->container->get(UserManager::class);
 
-if ($appState->isAuthenticated) {
+if ($userManager->isAuthenticated()) {
     RedirectResponse::sendResponse("index.php");
 } else {
     $countries = $di->container->get(CountryService::class)->list();
     $categories = $di->container->get(CategoryService::class)->list();
-    View::renderView(basename(__FILE__));
+
+    $viewFactory = $di->container->get(ViewFactory::class);
+    $viewFactory->renderView(basename(__FILE__), compact("countries", "categories"));
 }

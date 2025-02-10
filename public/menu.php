@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 use Managers\ErrorManager;
 use Managers\SuccessManager;
-use Models\Dtos\AppState;
 use Models\Requests\OrderRequest;
 use Services\OrderService;
 
@@ -28,6 +27,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-$appState = $di->container->get(AppState::class);
-
-View::renderView(basename(__FILE__));
+$viewFactory = $di->container->get(ViewFactory::class);
+$viewFactory->renderView(basename(__FILE__));

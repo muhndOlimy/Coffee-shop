@@ -57,7 +57,7 @@ nav .logo img{
 
 main {
   text-align: center;
-  height: calc(100vh - 148px);
+  height: calc(100vh - 128px);
 }
 
 main.register {
@@ -70,10 +70,13 @@ main.menu {
 
 main.home {
   background-image: url(../assets/imgs/main-image.avif);
-  background-repeat: none;
+  background-repeat: no-repeat;
   background-size: cover;
 }
 
+section {
+  overflow: auto;
+}
 
 /* Homepage styles */
 

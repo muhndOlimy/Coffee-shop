@@ -29,6 +29,5 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-$appState = $di->container->get(AppState::class);
-
-View::renderView(basename(__FILE__));
+$viewFactory = $di->container->get(ViewFactory::class);
+$viewFactory->renderView(basename(__FILE__));

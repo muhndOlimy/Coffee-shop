@@ -133,7 +133,7 @@ class Repository
 
     private function preparePKs(mixed $values): array
     {
-        if (gettype($values) === 'object' && $values::class === stdClass::class) {
+        if ($values instanceof stdClass) {
             $values = get_object_vars($values);
         }
         if (gettype($values) === 'array') {

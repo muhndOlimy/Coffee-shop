@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Managers;
 
+use Exception;
+
 class ErrorManager
 {
     /** @var string[] */
@@ -13,10 +15,10 @@ class ErrorManager
     {
     }
 
-    public function addError($error): void
+    public function addError(Exception|string $error): void
     {
-        if (gettype($error) == "object") {
-            $error = $error->__toString();
+        if ($error instanceof Exception) {
+            $error = $error->getMessage();
         }
         if (gettype($error) == 'string') {
             $this->errors[] = $error;

@@ -42,6 +42,7 @@ class DI
             UserManager::class => DI\autowire(),
             ErrorManager::class => DI\autowire(),
             SuccessManager::class => DI\autowire(),
+            ViewFactory::class => DI\autowire(),
             AuthService::class => function (Container $container) {
                 $dbDataSource = $container->get(DBDataSource::class);
                 return new AuthService(
@@ -91,7 +92,8 @@ class DI
             AppStateFactory::class => function (Container $container) {
                 return new AppStateFactory(
                     $container->get(UserManager::class),
-                    $container->get(ErrorManager::class)
+                    $container->get(ErrorManager::class),
+                    $container->get(SuccessManager::class)
                 );
             },
             AppState::class => function (Container $container) {

@@ -20,11 +20,6 @@ readonly class View extends Renderable
     {
         parent::__construct($viewPath);
     }
-
-    public static function renderView(string $viewPath): void
-    {
-        new View($viewPath)->render();
-    }
 }
 
 readonly class Component extends Renderable
@@ -37,5 +32,20 @@ readonly class Component extends Renderable
     public static function renderComponent(string $componentPath): void
     {
         new Component($componentPath)->render();
+    }
+}
+
+readonly class ViewFactory
+{
+    public function __construct(private AppStateFactory $appStateFactory)
+    {
+    }
+
+    public function renderView(string $viewPath, array $viewParams = []): void
+    {
+        extract($viewParams);
+        global $appState;
+        $appState = $this->appStateFactory->createState();
+        new View($viewPath)->render();
     }
 }
