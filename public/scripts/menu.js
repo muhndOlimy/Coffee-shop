@@ -1,4 +1,4 @@
-window.onload = async function () {
+window.addEventListener('load', async function () {
     const url = "../public/drinks.php";
     try {
         const response = await fetch(url);
@@ -11,7 +11,7 @@ window.onload = async function () {
     } catch (error) {
         console.error(error.message);
     }
-}
+});
 
 function insertDrinks(drinks) {
     const menuList = document.querySelector("#menu_list");

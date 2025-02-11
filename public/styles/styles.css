@@ -1,4 +1,13 @@
 /* Navbar styles */
+:root {
+  --llbrown: #D6C0B3;
+  --lbrown: #AB886D;
+  --bbrown: #6b4226;
+  --ddbrown: #5a3820;
+  --brown: #493628;
+  --dbrown: #49362890;
+}
+
 *{
   box-sizing: border-box;
 }
@@ -10,7 +19,7 @@ body {
 }
 
 header {
-  background-color: #AB886D;
+  background-color: var(--lbrown);
   color: #fff;
   padding: 0.25rem 0;
 }
@@ -82,7 +91,7 @@ section {
 
 main .hero{
   padding: 1rem 1rem;
-  background-color: #49362890;
+  background-color: var(--dbrown);
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -98,13 +107,13 @@ main .hero h1{
 }
 
 main .hero p{
-  color: #D6C0B3;
+  color: var(--llbrown);
   margin: 0.5rem;
 }
 
 main .hero a{
   background-color: #E4E0E1;
-  color: #493628;
+  color: var(--brown);
   text-decoration: none;
   padding: 0.5rem 2rem;
   margin: 0.5rem;
@@ -124,7 +133,7 @@ section#about{
 section#about p{
   width: 80%;
   margin: 0 auto;
-  background-color: #AB886D;
+  background-color: var(--lbrown);
   border-radius: 15px;
   padding: 1rem;
   color: #fff;
@@ -155,7 +164,7 @@ section#we-offer .services .service:nth-child(4)
 section#we-offer .services .service:nth-child(2) ,
 section#we-offer .services .service:nth-child(3)
 {
-  background-color: #D6C0B3;
+  background-color: var(--llbrown);
 }
 
 /* Menu styles */
@@ -180,7 +189,7 @@ section#menu .menu .menu-item{
   background-color: #E4E0E1;
   border-radius: 10px;
   margin-bottom: 1rem;
-  border: 1px solid #493628;
+  border: 1px solid var(--brown);
   gap: 2rem;
   height: 100px;
 }
@@ -217,14 +226,14 @@ section#menu .menu .menu-item .desc .prices{
 section#menu .menu .menu-item .desc p{
   margin: 0.25rem 0;
   text-align: start;
-  color: #493628;
+  color: var(--brown);
 }
 
 
 /* Footer styles */
 
 footer {
-  background: #493628;
+  background: var(--brown);
   color: white;
   font-size: 0.75rem;
   padding: 0.25rem;
@@ -286,7 +295,7 @@ form input[type="radio"], form input[type="checkbox"] {
 form button {
   width: 100%;
   padding: 0.5rem;
-  background-color: #6b4226;
+  background-color: var(--bbrown);
   color: white;
   border: none;
   border-radius: 5px;
@@ -294,5 +303,72 @@ form button {
 }
 
 form button:hover {
-  background-color: #5a3820;
+  background-color: var(--ddbrown);
+}
+
+/* Modal Styles */
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Header */
+.modal-header {
+  padding: 2px 16px;
+  background-color: var(--lbrown);
+  color: white;
+}
+
+/* Modal Body */
+.modal-body {padding: 2px 16px;}
+
+/* Modal Footer */
+.modal-footer {
+  padding: 2px 16px;
+  background-color: var(--dbrown);
+  color: white;
+}
+
+/* Modal Content */
+.modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  border: 1px solid #888;
+  width: 50%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  animation-name: animatetop;
+  animation-duration: 0.4s
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Add Animation */
+@keyframes animatetop {
+  from {top: -300px; opacity: 0}
+  to {top: 0; opacity: 1}
 }

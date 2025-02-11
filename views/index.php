@@ -20,8 +20,7 @@
     </section>
 </main>
 
-<footer>
-    <p>&copy; 2024 Coffee Express. All rights reserved.</p>
-</footer>
+<?php Component::renderComponent("footer.php"); ?>
+<?php Component::renderComponent("modal.php"); ?>
 </body>
 </html>

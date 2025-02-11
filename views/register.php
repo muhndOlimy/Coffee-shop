@@ -15,7 +15,7 @@ global $categories;
 </head>
 <body>
 <script>
-    window.onload = function () {
+    window.addEventListener('load', function () {
         let countriesData = <?= json_encode($countries) ?>;
         let countries = countriesData.map(el => el.country);
         let states = countriesData.reduce((dict, el) => {
@@ -42,7 +42,7 @@ global $categories;
                 stateSelector.appendChild(opt);
             }
         });
-    }
+    });
 </script>
 <header>
     <?php Component::renderComponent("nav.php"); ?>
@@ -121,8 +121,7 @@ global $categories;
     </section>
 </main>
 
-<footer>
-    <p>&copy; 2024 Coffee Express. All rights reserved.</p>
-</footer>
+<?php Component::renderComponent("footer.php"); ?>
+<?php Component::renderComponent("modal.php"); ?>
 </body>
 </html>
