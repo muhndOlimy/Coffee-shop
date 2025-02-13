@@ -28,8 +28,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $request->state = (int)($_POST['state'] ?? null);
         $authService = $di->container->get(AuthService::class);
         $authService->register($request);
-        $successManager = $di->container->get(SuccessManager::class);
-        $successManager->addMessage("Welcome!");
     } catch (Exception $e) {
         $errorManager = $di->container->get(ErrorManager::class);
         $errorManager->addError($e);
@@ -39,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 $userManager = $di->container->get(UserManager::class);
 
 if ($userManager->isAuthenticated()) {
-    RedirectResponse::sendResponse("index.php");
+    RedirectResponse::sendResponse("index.php?register=true");
 } else {
     $countries = $di->container->get(CountryService::class)->list();
     $categories = $di->container->get(CategoryService::class)->list();
