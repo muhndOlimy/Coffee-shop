@@ -58,7 +58,7 @@ $events = array_merge($events, array_map(fn($event) => ['type' => 'success', 'me
             <p class="modal-body-message">Some text in the Modal Body</p>
         </div>
         <div class="modal-footer">
-            <h3 class="modal-footer-footer">&copy; 2024 Coffee Express.</h3>
+            <h3 class="modal-footer-footer">&copy; 2025 Coffee Express.</h3>
         </div>
     </div>
 </div>
